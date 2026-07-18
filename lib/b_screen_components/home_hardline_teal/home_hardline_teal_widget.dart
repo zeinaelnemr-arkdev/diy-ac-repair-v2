@@ -18,6 +18,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// Real routes from the existing app -- same content, same Firebase project,
+// same navigation graph. Stitch is the visual reference only; every nav
+// target below points at the actual page that already queries Firestore
+// (ac_makes/ac_models via FFAppState, videos, orders, technicians, etc.).
+import '/a_pages/a_main_pages/b_diagnosis/b_diagnosis_widget.dart';
+import '/a_pages/a_main_pages/i_about/i_about_widget.dart';
+import '/a_pages/a_main_pages/c_library_video_flow/c_library_video_flow_widget.dart';
+import '/a_pages/a_main_pages/l_user_profile/g_track_and_find_my_order/g_track_and_find_my_order_widget.dart';
+import '/a_pages/a_main_pages/l_request_technical/l_request_technical_widget.dart';
+
 class HardlineTeal {
   static const surface = Color(0xFFF9F9F9);
   static const surfaceContainer = Color(0xFFEEEEEE);
@@ -66,6 +76,27 @@ class HomeHardlineTealWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Same content, same database, same navigation graph as the live app --
+    // Stitch is the visual reference only. Each callback falls back to the
+    // real existing route (Firestore-backed) rather than a dead end, so
+    // this widget works correctly the moment it's dropped in as Home.
+    final effectiveStartDiagnosis =
+        onStartDiagnosis ?? () => context.pushNamed(BDiagnosisWidget.routeName);
+    final effectiveVideoLibrary = onVideoLibrary ??
+        () => context.pushNamed(CLibraryVideoFlowWidget.routeName);
+    final effectiveOrderTracking = onOrderTracking ??
+        () => context.pushNamed(GTrackAndFindMyOrderWidget.routeName);
+    final effectiveFindTech =
+        onFindTech ?? () => context.pushNamed(LRequestTechnicalWidget.routeName);
+    final effectiveAboutUs = onAboutUs ?? () => context.pushNamed(IAboutWidget.routeName);
+    // "Guides"/"Parts"/"Diagnostics"/"Techs" nav-bar labels map onto the same
+    // four destinations as the quick-link cards below them.
+    final effectiveNavGuides = onNavGuides ?? effectiveVideoLibrary;
+    final effectiveNavParts = onNavParts ?? effectiveOrderTracking;
+    final effectiveNavDiagnostics = onNavDiagnostics ?? effectiveStartDiagnosis;
+    final effectiveNavTechs = onNavTechs ?? effectiveFindTech;
+    final effectiveLearnBasics = onLearnBasics ?? effectiveStartDiagnosis;
+
     return Scaffold(
       backgroundColor: HardlineTeal.surface,
       body: LayoutBuilder(
@@ -87,18 +118,18 @@ class HomeHardlineTealWidget extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    _HeroSection(tier: tier, onStartDiagnosis: onStartDiagnosis),
+                    _HeroSection(tier: tier, onStartDiagnosis: effectiveStartDiagnosis),
                     _QuickLinksGrid(
                       tier: tier,
-                      onVideoLibrary: onVideoLibrary,
-                      onOrderTracking: onOrderTracking,
-                      onFindTech: onFindTech,
-                      onAboutUs: onAboutUs,
+                      onVideoLibrary: effectiveVideoLibrary,
+                      onOrderTracking: effectiveOrderTracking,
+                      onFindTech: effectiveFindTech,
+                      onAboutUs: effectiveAboutUs,
                     ),
                     if (tier == _Tier.desktop) const _MarqueeTicker(),
                     if (tier != _Tier.mobile)
                       _IdentifyFailureSection(
-                          tier: tier, onLearnBasics: onLearnBasics)
+                          tier: tier, onLearnBasics: effectiveLearnBasics)
                     else
                       const _MobileStatusCard(),
                     if (tier != _Tier.mobile) const _Footer(),
@@ -107,16 +138,16 @@ class HomeHardlineTealWidget extends StatelessWidget {
               ),
               _TopNavBar(
                 tier: tier,
-                onNavGuides: onNavGuides,
-                onNavParts: onNavParts,
-                onNavDiagnostics: onNavDiagnostics,
-                onNavTechs: onNavTechs,
-                onStartDiagnosis: onStartDiagnosis,
+                onNavGuides: effectiveNavGuides,
+                onNavParts: effectiveNavParts,
+                onNavDiagnostics: effectiveNavDiagnostics,
+                onNavTechs: effectiveNavTechs,
+                onStartDiagnosis: effectiveStartDiagnosis,
               ),
               if (tier == _Tier.mobile)
-                _MobileStickyCta(onStartDiagnosis: onStartDiagnosis)
+                _MobileStickyCta(onStartDiagnosis: effectiveStartDiagnosis)
               else
-                _Fab(onTap: onStartDiagnosis),
+                _Fab(onTap: effectiveStartDiagnosis),
             ],
           );
         },
@@ -409,80 +440,137 @@ class _HeroSection extends StatelessWidget {
   }
 }
 
-class _UnitIdField extends StatelessWidget {
+/// Real, functional text entry (not a styled static box) so it's actually
+/// usable via keyboard/screen reader -- per the accessibility audit's
+/// keyboard-navigability and focus-visible findings. On focus the border
+/// stays solid black and the fill tints pale teal, exactly as specified in
+/// docs/DESIGN_SYSTEM.md's "Input Fields" component spec.
+///
+/// Carries the same intent as the current live app's make/model/serial
+/// entry (same Firestore-backed ac_makes/ac_models data) but as Stitch's
+/// simplified single free-text field; the Diagnosis page itself still does
+/// the real make/model lookup against FFAppState/Firestore once opened, so
+/// no data or functionality is lost by simplifying the entry point here.
+class _UnitIdField extends StatefulWidget {
   const _UnitIdField({this.onStartDiagnosis, required this.wide});
   final VoidCallback? onStartDiagnosis;
   final bool wide;
 
   @override
+  State<_UnitIdField> createState() => _UnitIdFieldState();
+}
+
+class _UnitIdFieldState extends State<_UnitIdField> {
+  final _controller = TextEditingController();
+  final _focusNode = FocusNode();
+  bool _focused = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode.addListener(() => setState(() => _focused = _focusNode.hasFocus));
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final field = Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: HardlineTeal.primary, width: wide ? 4 : 0),
-        boxShadow: wide
-            ? const [BoxShadow(color: HardlineTeal.primary, offset: Offset(8, 8))]
-            : null,
-      ),
-      padding: EdgeInsets.all(wide ? 24 : 0),
-      constraints: wide ? const BoxConstraints(maxWidth: 700) : null,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text('UNIT IDENTIFICATION',
-              style: _spaceGrotesk(fontSize: 13, fontWeight: FontWeight.bold)),
-          const SizedBox(height: 8),
-          Flex(
-            direction: wide ? Axis.horizontal : Axis.vertical,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Expanded(
-                flex: wide ? 1 : 0,
-                child: Container(
+    final wide = widget.wide;
+    return Semantics(
+      container: true,
+      label: 'Unit identification',
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(color: HardlineTeal.primary, width: wide ? 4 : 0),
+          boxShadow: wide
+              ? const [BoxShadow(color: HardlineTeal.primary, offset: Offset(8, 8))]
+              : null,
+        ),
+        padding: EdgeInsets.all(wide ? 24 : 0),
+        constraints: wide ? const BoxConstraints(maxWidth: 700) : null,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('UNIT IDENTIFICATION',
+                style: _spaceGrotesk(fontSize: 13, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8),
+            Flex(
+              direction: wide ? Axis.horizontal : Axis.vertical,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Expanded(
+                  flex: wide ? 1 : 0,
+                  child: Container(
+                    height: 56,
+                    decoration: BoxDecoration(
+                      // Focus treatment per DESIGN.md: border stays solid
+                      // black, fill tints pale teal -- a highly visible,
+                      // non-default-browser-outline focus indicator (the
+                      // audit flagged this Brutalist style as one that
+                      // often strips default focus rings).
+                      color: _focused
+                          ? HardlineTeal.teal.withOpacity(0.12)
+                          : Colors.white,
+                      border: Border.all(
+                        color: HardlineTeal.primary,
+                        width: _focused ? 4 : 3,
+                      ),
+                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    alignment: Alignment.centerLeft,
+                    child: TextField(
+                      controller: _controller,
+                      focusNode: _focusNode,
+                      textInputAction: TextInputAction.search,
+                      onSubmitted: (_) => widget.onStartDiagnosis?.call(),
+                      style: _spaceGrotesk(fontSize: 14, fontWeight: FontWeight.bold),
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        isDense: true,
+                        hintText: 'ENTER A/C BRAND, MODEL, OR SERIAL NUMBER',
+                        hintStyle: _spaceGrotesk(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: HardlineTeal.onSurfaceVariant),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: wide ? 8 : 0, height: wide ? 0 : 8),
+                SizedBox(
                   height: 56,
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: HardlineTeal.primary, width: 3),
-                  ),
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'ENTER A/C BRAND, MODEL, OR SERIAL NUMBER',
-                    style: _spaceGrotesk(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color: HardlineTeal.onSurfaceVariant),
-                  ),
-                ),
-              ),
-              SizedBox(width: wide ? 8 : 0, height: wide ? 0 : 8),
-              SizedBox(
-                height: 56,
-                child: ElevatedButton(
-                  onPressed: onStartDiagnosis,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: HardlineTeal.primary,
-                    foregroundColor: HardlineTeal.onPrimary,
-                    shape: const RoundedRectangleBorder(),
-                    elevation: 0,
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text('START DIAGNOSIS',
-                          style: _spaceGrotesk(fontWeight: FontWeight.bold, fontSize: 15)),
-                      const SizedBox(width: 8),
-                      const Icon(Icons.arrow_forward, size: 20),
-                    ],
+                  child: ElevatedButton(
+                    onPressed: widget.onStartDiagnosis,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: HardlineTeal.primary,
+                      foregroundColor: HardlineTeal.onPrimary,
+                      shape: const RoundedRectangleBorder(),
+                      elevation: 0,
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text('START DIAGNOSIS',
+                            style: _spaceGrotesk(fontWeight: FontWeight.bold, fontSize: 15)),
+                        const SizedBox(width: 8),
+                        const Icon(Icons.arrow_forward, size: 20),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
-    return field;
   }
 }
 
@@ -633,7 +721,12 @@ class _QuickLinkCardState extends State<_QuickLinkCard> {
     return MouseRegion(
       onEnter: (_) => setState(() => _hover = true),
       onExit: (_) => setState(() => _hover = false),
-      child: InkWell(
+      child: Semantics(
+        button: true,
+        label: widget.description != null
+            ? '${widget.label}. ${widget.description}'
+            : widget.label,
+        child: InkWell(
         onTap: widget.onTap,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 100),
@@ -674,6 +767,7 @@ class _QuickLinkCardState extends State<_QuickLinkCard> {
               ],
             ],
           ),
+        ),
         ),
       ),
     );
@@ -722,22 +816,29 @@ class _MarqueeTickerState extends State<_MarqueeTicker>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: HardlineTeal.primary,
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      child: SingleChildScrollView(
-        controller: _scrollController,
-        scrollDirection: Axis.horizontal,
-        physics: const NeverScrollableScrollPhysics(),
-        child: Text(
-          _text * 3,
-          maxLines: 1,
-          softWrap: false,
-          style: _spaceGrotesk(
-            fontSize: 12,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 1.2,
-            color: HardlineTeal.onPrimary,
+    // Purely decorative/ambient (the same safety copy is exposed properly
+    // elsewhere -- the footer warning box on desktop/tablet, the teal status
+    // card on mobile) so it's excluded from the semantics tree rather than
+    // read out 3x over by screen readers, per the audit's guidance to mark
+    // decorative repeating elements aria-hidden.
+    return ExcludeSemantics(
+      child: Container(
+        color: HardlineTeal.primary,
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: SingleChildScrollView(
+          controller: _scrollController,
+          scrollDirection: Axis.horizontal,
+          physics: const NeverScrollableScrollPhysics(),
+          child: Text(
+            _text * 3,
+            maxLines: 1,
+            softWrap: false,
+            style: _spaceGrotesk(
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 1.2,
+              color: HardlineTeal.onPrimary,
+            ),
           ),
         ),
       ),
@@ -864,9 +965,14 @@ class _MobileStatusCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // aria-live equivalent per the audit: this is the safety-critical
+    // message on mobile (there's no separate marquee ticker at this tier),
+    // so it's announced as a live region rather than silently present.
     return Padding(
       padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
-      child: Container(
+      child: Semantics(
+        liveRegion: true,
+        child: Container(
         decoration: BoxDecoration(
           color: HardlineTeal.teal,
           border: Border.all(color: HardlineTeal.primary, width: 3),
@@ -890,6 +996,7 @@ class _MobileStatusCard extends StatelessWidget {
             ),
             const Icon(Icons.warning_amber_rounded, size: 36, color: HardlineTeal.primary),
           ],
+        ),
         ),
       ),
     );
