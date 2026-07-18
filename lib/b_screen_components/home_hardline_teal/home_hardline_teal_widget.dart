@@ -27,6 +27,7 @@ import '/a_pages/a_main_pages/i_about/i_about_widget.dart';
 import '/a_pages/a_main_pages/c_library_video_flow/c_library_video_flow_widget.dart';
 import '/a_pages/a_main_pages/l_user_profile/g_track_and_find_my_order/g_track_and_find_my_order_widget.dart';
 import '/a_pages/a_main_pages/l_request_technical/l_request_technical_widget.dart';
+import '/b_screen_components/parts_selection_hardline_teal/parts_selection_hardline_teal_widget.dart';
 
 class HardlineTeal {
   static const surface = Color(0xFFF9F9F9);
@@ -92,7 +93,8 @@ class HomeHardlineTealWidget extends StatelessWidget {
     // "Guides"/"Parts"/"Diagnostics"/"Techs" nav-bar labels map onto the same
     // four destinations as the quick-link cards below them.
     final effectiveNavGuides = onNavGuides ?? effectiveVideoLibrary;
-    final effectiveNavParts = onNavParts ?? effectiveOrderTracking;
+    final effectiveNavParts = onNavParts ??
+        () => context.pushNamed(PartsSelectionHardlineTealWidget.routeName);
     final effectiveNavDiagnostics = onNavDiagnostics ?? effectiveStartDiagnosis;
     final effectiveNavTechs = onNavTechs ?? effectiveFindTech;
     final effectiveLearnBasics = onLearnBasics ?? effectiveStartDiagnosis;
