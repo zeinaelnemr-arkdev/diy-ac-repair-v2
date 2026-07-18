@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Parts-to-Order | RAW AC REPAIR</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#f1f1f1",
+                        "primary-container": "#1b1b1b",
+                        "on-surface": "#1b1b1b",
+                        "tertiary": "#000000",
+                        "on-primary-fixed-variant": "#474747",
+                        "outline-variant": "#cfc4c5",
+                        "secondary-container": "#dfe0e0",
+                        "inverse-primary": "#c6c6c6",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#e2e2e2",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e8e8e8",
+                        "error-container": "#ffdad6",
+                        "surface": "#f9f9f9",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#303030",
+                        "surface-dim": "#dadada",
+                        "on-primary-fixed": "#1b1b1b",
+                        "secondary": "#5d5f5f",
+                        "surface-bright": "#f9f9f9",
+                        "on-secondary-fixed-variant": "#454747",
+                        "on-tertiary-fixed": "#221b00",
+                        "on-tertiary-container": "#9b8200",
+                        "tertiary-container": "#221b00",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-primary-container": "#848484",
+                        "background": "#f9f9f9",
+                        "outline": "#7e7576",
+                        "surface-variant": "#e2e2e2",
+                        "tertiary-fixed": "#ffe16d",
+                        "on-tertiary-fixed-variant": "#544600",
+                        "secondary-fixed": "#e2e2e2",
+                        "primary": "#000000",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "on-secondary-container": "#616363",
+                        "on-error": "#ffffff",
+                        "on-background": "#1b1b1b",
+                        "surface-tint": "#5e5e5e",
+                        "on-surface-variant": "#4c4546",
+                        "tertiary-fixed-dim": "#e9c400",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f3f3f3",
+                        "hardline-teal": "#008080"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "xxl": "48px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "huge": "64px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "display": ["Space Grotesk"],
+                        "body-mobile": ["Space Grotesk"],
+                        "title": ["Space Grotesk"],
+                        "display-mobile": ["Space Grotesk"],
+                        "label": ["Space Grotesk"],
+                        "headline": ["Space Grotesk"],
+                        "headline-mobile": ["Space Grotesk"],
+                        "body": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "display": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-mobile": ["16px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                        "title": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "display-mobile": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label": ["14px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .brutalist-shadow {
+            box-shadow: 4px 4px 0px 0px #000000;
+        }
+        .brutalist-shadow-hover:hover {
+            box-shadow: 8px 8px 0px 0px #000000;
+            transform: translate(-2px, -2px);
+        }
+        .brutalist-shadow-active:active {
+            box-shadow: 0px 0px 0px 0px #000000;
+            transform: translate(4px, 4px);
+        }
+        .bg-industrial-teal {
+            background-color: #008080;
+        }
+        .custom-checkbox:checked + label .check-icon {
+            opacity: 1;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-step {
+            background-color: #000000;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 border-b-4 border-primary bg-surface flex justify-between items-center h-16 px-6">
+<div class="font-headline text-2xl font-black uppercase text-primary">RAW AC REPAIR</div>
+<nav class="hidden md:flex gap-8 items-center h-full">
+<a class="font-body text-sm font-medium text-on-surface-variant hover:bg-primary hover:text-on-primary transition-colors duration-100 px-2" href="#">GUIDES</a>
+<a class="font-body text-sm font-bold text-primary border-b-4 border-primary pb-1 px-2" href="#">PARTS</a>
+<a class="font-body text-sm font-medium text-on-surface-variant hover:bg-primary hover:text-on-primary transition-colors duration-100 px-2" href="#">DIAGNOSTICS</a>
+<a class="font-body text-sm font-medium text-on-surface-variant hover:bg-primary hover:text-on-primary transition-colors duration-100 px-2" href="#">TECHS</a>
+</nav>
+<button class="bg-primary text-on-primary font-body text-sm font-bold px-4 py-2 brutalist-shadow brutalist-shadow-active uppercase">GET STARTED</button>
+</header>
+<main class="pt-24 pb-24 px-6 max-w-7xl mx-auto">
+<!-- Progress Wizard -->
+<section class="mb-12">
+<div class="flex items-center justify-between gap-4 overflow-x-auto pb-4">
+<div class="flex items-center gap-4 flex-shrink-0">
+<div class="w-10 h-10 border-4 border-black flex items-center justify-center font-bold bg-surface-container">01</div>
+<span class="font-headline text-sm uppercase font-black opacity-50">Diagnostics</span>
+</div>
+<div class="h-1 w-12 bg-black hidden sm:block"></div>
+<div class="flex items-center gap-4 flex-shrink-0">
+<div class="w-10 h-10 border-4 border-black flex items-center justify-center font-bold active-step brutalist-shadow">02</div>
+<span class="font-headline text-sm uppercase font-black">Select Part</span>
+</div>
+<div class="h-1 w-12 bg-black opacity-20 hidden sm:block"></div>
+<div class="flex items-center gap-4 flex-shrink-0 opacity-40">
+<div class="w-10 h-10 border-4 border-black flex items-center justify-center font-bold">03</div>
+<span class="font-headline text-sm uppercase font-black">Checkout</span>
+</div>
+<div class="h-1 w-12 bg-black opacity-20 hidden sm:block"></div>
+<div class="flex items-center gap-4 flex-shrink-0 opacity-40">
+<div class="w-10 h-10 border-4 border-black flex items-center justify-center font-bold">04</div>
+<span class="font-headline text-sm uppercase font-black">Tracking</span>
+</div>
+</div>
+</section>
+<!-- Warning Box -->
+<div class="bg-industrial-teal text-white border-4 border-black p-6 mb-12 flex items-center gap-6 brutalist-shadow">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">warning</span>
+<div>
+<p class="font-headline text-xl font-bold uppercase tracking-tight">Not sure? See our scope of repair guide.</p>
+<p class="font-body text-sm mt-1">Ordering the wrong component can delay repairs. Consult the technical manual before proceeding.</p>
+</div>
+<button class="ml-auto bg-black text-white px-6 py-2 font-bold uppercase hover:bg-neutral-800 transition-colors">VIEW GUIDE</button>
+</div>
+<!-- Part Checklist -->
+<h2 class="font-headline text-headline font-black uppercase mb-8 border-l-8 border-black pl-6">Available Replacements</h2>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Card 1: Condenser Fan Motor -->
+<div class="bg-white border-4 border-black p-0 flex flex-col brutalist-shadow brutalist-shadow-hover transition-all group">
+<div class="bg-surface-container border-b-4 border-black aspect-video relative overflow-hidden">
+<div class="absolute inset-0 p-4 opacity-80 mix-blend-multiply">
+<img class="w-full h-full object-contain" data-alt="A highly detailed technical blueprint drawing of a condenser fan motor, rendered in a crisp black and white architectural style. The illustration shows a cross-section of the electrical component with visible windings and a central shaft, appearing as if stamped onto industrial-grade paper." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5gAo1tB3p6z5fsk7dg8k7ibWjHT6YiErW-JuAn-1K-iOtxPA-EoNTnk9djpLsnagONB9DXARXZl04vwwLrp0-2EYcCpkU7YHPVToryOI8z-GkGKyw5ZfQ9mvzEkaxNnSBxooKm5kBwK1x7XW-R_D35nqUR8e-2OizRQkzfpxLohbpNgDP8-HNALYFYn6QervYUzMQOfLFTo7w757mEDVpqK0JTJw3Kq0eiX6o40IMn9VbaZeMuDl-yYpy28F5GPvLlyrKjcY_ZgPI"/>
+</div>
+<div class="absolute top-4 left-4 bg-black text-white px-2 py-1 text-xs font-bold uppercase">SERIAL: CF-992-X</div>
+</div>
+<div class="p-6 flex-grow flex flex-col">
+<h3 class="font-headline text-title uppercase font-black mb-2">Condenser Fan Motor</h3>
+<p class="font-body text-sm mb-4 text-on-surface-variant leading-tight">High-torque replacement for industrial grade AC units. Sealed ball bearings for 24/7 operation.</p>
+<div class="mt-auto pt-6 border-t-2 border-black flex items-end justify-between">
+<div>
+<span class="font-label text-xs uppercase text-on-surface-variant">Starting at</span>
+<div class="font-headline text-3xl font-black">$249.00</div>
+</div>
+<div class="relative">
+<input class="hidden custom-checkbox" id="part-1" type="checkbox"/>
+<label class="cursor-pointer flex items-center justify-center w-14 h-14 border-4 border-black bg-white group-hover:bg-industrial-teal group-hover:text-white transition-colors brutalist-shadow-active" for="part-1">
+<span class="material-symbols-outlined check-icon opacity-0 text-3xl font-bold transition-opacity">check</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Run Capacitor -->
+<div class="bg-industrial-teal text-white border-4 border-black p-0 flex flex-col brutalist-shadow brutalist-shadow-hover transition-all group">
+<div class="bg-surface-container border-b-4 border-black aspect-video relative overflow-hidden">
+<div class="absolute inset-0 p-4 opacity-80 mix-blend-multiply">
+<img class="w-full h-full object-contain" data-alt="A detailed technical schematic of an industrial run capacitor, featuring a cylindrical metal housing with dual electrical terminals at the top." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCk7LcuhzW_6_6KcxcQHO2fUXf22-AjGzq5mhzycWM3ggtKeASLOHpTtwOtPDrhGbPFJRuQevHO4dmTaLCGac9cuoamrlcr5slyrrsTHjI73vfxDsWBJCdMsuQzp5TUY5jNXm_ad_D41AsYFhJw7gCAcGCgtQQex_LaooAeh_Ge3qnF5UnwyuuXpBgXNYu6B-Ihnw_HUZbZ8faAb8OmV5jwzdgAUungzjNrZSeU_wrOpcVm2oqjpDi50xeLVict4Vyu3zMtaHITy1tx"/>
+</div>
+<div class="absolute top-4 left-4 bg-black text-white px-2 py-1 text-xs font-bold uppercase">SERIAL: RC-45-D</div>
+</div>
+<div class="p-6 flex-grow flex flex-col">
+<h3 class="font-headline text-title uppercase font-black mb-2">Run Capacitor</h3>
+<p class="font-body text-sm mb-4 opacity-90 leading-tight">Dual-run design. Rated for 45+5 MFD at 440 Volts. OEM standard for heavy duty startup cycles.</p>
+<div class="mt-auto pt-6 border-t-2 border-black flex items-end justify-between">
+<div>
+<span class="font-label text-xs uppercase opacity-70">Starting at</span>
+<div class="font-headline text-3xl font-black">$42.50</div>
+</div>
+<div class="relative">
+<input checked="" class="hidden custom-checkbox" id="part-2" type="checkbox"/>
+<label class="cursor-pointer flex items-center justify-center w-14 h-14 border-4 border-black bg-white group-hover:bg-industrial-teal transition-colors brutalist-shadow-active text-black" for="part-2">
+<span class="material-symbols-outlined check-icon opacity-100 text-3xl font-bold transition-opacity">check</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3: Magnetic Contactor -->
+<div class="bg-white border-4 border-black p-0 flex flex-col brutalist-shadow brutalist-shadow-hover transition-all group">
+<div class="bg-surface-container border-b-4 border-black aspect-video relative overflow-hidden">
+<div class="absolute inset-0 p-4 opacity-80 mix-blend-multiply">
+<img class="w-full h-full object-contain" data-alt="A precision technical drawing of a magnetic contactor for industrial HVAC systems." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfCeiqYNeIGqD1bNZdzTX5VFQJs7AHFr6kzBJjkG-LlA7ete4Xwrl4Zt--mlA9y_klmvg7dw8RAGuZF3JmNbeMiwr7DxVw9H1LITwHLJI653XXdNOwVaGOP_OBP1IoxkwKn3n9x77EijUK2UseMJVgsc7AEjALjq_BfCMe502yt4O-L0H1a4MRK44cOfbU3xDu1ryy7aFyeRTKulSGvFNrT0uQ3VO2UzKr_ub4zolsfsxFx4EuOjIUgKC_9aHiYUfKZPZElK7rDDKG"/>
+</div>
+<div class="absolute top-4 left-4 bg-black text-white px-2 py-1 text-xs font-bold uppercase">SERIAL: MC-30-2P</div>
+</div>
+<div class="p-6 flex-grow flex flex-col">
+<h3 class="font-headline text-title uppercase font-black mb-2">Magnetic Contactor</h3>
+<p class="font-body text-sm mb-4 text-on-surface-variant leading-tight">30 Amp 2-Pole contactor. Designed for arc suppression and extreme thermal stability.</p>
+<div class="mt-auto pt-6 border-t-2 border-black flex items-end justify-between">
+<div>
+<span class="font-label text-xs uppercase text-on-surface-variant">Starting at</span>
+<div class="font-headline text-3xl font-black">$118.00</div>
+</div>
+<div class="relative">
+<input class="hidden custom-checkbox" id="part-3" type="checkbox"/>
+<label class="cursor-pointer flex items-center justify-center w-14 h-14 border-4 border-black bg-white group-hover:bg-industrial-teal group-hover:text-white transition-colors brutalist-shadow-active" for="part-3">
+<span class="material-symbols-outlined check-icon opacity-0 text-3xl font-bold transition-opacity">check</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Order Summary & Actions -->
+<div class="mt-16 flex flex-col md:flex-row items-center justify-between gap-8 border-t-8 border-black pt-12">
+<div>
+<div class="font-label text-sm uppercase opacity-60">Estimated Total (EXCL. SHIPPING)</div>
+<div class="font-headline text-5xl font-black">$42.50</div>
+</div>
+<div class="flex gap-4 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-10 py-5 border-4 border-black font-black uppercase hover:bg-neutral-200 transition-colors brutalist-shadow-active">Go Back</button>
+<button class="flex-1 md:flex-none px-10 py-5 bg-black text-white font-black uppercase hover:bg-neutral-800 transition-colors brutalist-shadow brutalist-shadow-hover">Confirm Parts &amp; Order</button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t-4 border-primary bg-primary text-on-primary">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 p-12 w-full">
+<div class="flex flex-col gap-4">
+<div class="font-headline text-lg font-black uppercase">RAW AC REPAIR</div>
+<p class="font-body text-xs opacity-70 leading-relaxed uppercase tracking-widest">
+                    SYSTEM AUTHORIZED REPAIR NODE. PROVIDING CRITICAL INFRASTRUCTURE MAINTENANCE COMPONENTS FOR HARSH ENVIRONMENTS.
+                </p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<a class="font-body text-xs uppercase tracking-widest opacity-70 hover:opacity-100 transition-opacity" href="#">SITEMAP</a>
+<a class="font-body text-xs uppercase tracking-widest opacity-70 hover:opacity-100 transition-opacity" href="#">LEGAL</a>
+<a class="font-body text-xs uppercase tracking-widest opacity-70 hover:opacity-100 transition-opacity" href="#">SAFETY PROTOCOLS</a>
+</div>
+<div class="flex flex-col gap-2">
+<a class="font-body text-xs uppercase tracking-widest opacity-70 hover:opacity-100 transition-opacity" href="#">API</a>
+<a class="font-body text-xs uppercase tracking-widest opacity-70 hover:opacity-100 transition-opacity" href="#">CONTACT</a>
+</div>
+</div>
+<div class="flex flex-col justify-end text-right md:items-end">
+<p class="font-body text-[10px] uppercase tracking-[0.2em] max-w-xs">
+                    © 2024 THE RAW EDITORIAL AC REPAIR. VOLTAGE WARNING: HIGH VOLTAGE SYSTEMS REQUIRE CERTIFIED HANDLING.
+                </p>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for part selection
+        document.querySelectorAll('.custom-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const icon = this.nextElementSibling.querySelector('.check-icon');
+                const card = this.closest('.brutalist-shadow-hover');
+                const descriptions = card.querySelectorAll('.text-on-surface-variant, .opacity-70');
+                const mainDesc = card.querySelector('.font-body');
+                
+                if (this.checked) {
+                    icon.classList.remove('opacity-0');
+                    icon.classList.add('opacity-100');
+                    card.classList.add('bg-industrial-teal', 'text-white');
+                    card.classList.remove('bg-white');
+                    descriptions.forEach(d => { d.classList.remove('text-on-surface-variant', 'opacity-70'); d.classList.add('opacity-70'); });
+                    if(mainDesc) mainDesc.classList.add('opacity-90');
+                } else {
+                    icon.classList.add('opacity-0');
+                    icon.classList.remove('opacity-100');
+                    card.classList.remove('bg-industrial-teal', 'text-white');
+                    card.classList.add('bg-white');
+                    descriptions.forEach(d => { d.classList.add('text-on-surface-variant'); d.classList.remove('opacity-70'); });
+                    if(mainDesc) mainDesc.classList.remove('opacity-90');
+                }
+                updateTotal();
+            });
+        });
+
+        function updateTotal() {
+            let total = 0;
+            if(document.getElementById('part-1').checked) total += 249.00;
+            if(document.getElementById('part-2').checked) total += 42.50;
+            if(document.getElementById('part-3').checked) total += 118.00;
+            
+            document.querySelector('.text-5xl').textContent = '$' + total.toFixed(2);
+        }
+    </script>
+</body></html>

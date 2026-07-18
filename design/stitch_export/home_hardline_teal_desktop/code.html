@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DIY AC Repair - Industrial Brutalism</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .hard-shadow {
+            box-shadow: 8px 8px 0px 0px #000000;
+        }
+        .hard-shadow-sm {
+            box-shadow: 4px 4px 0px 0px #000000;
+        }
+        .hard-shadow-lg {
+            box-shadow: 12px 12px 0px 0px #000000;
+        }
+        .press-effect:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px 0px #000000;
+        }
+        .press-effect-lg:active {
+            transform: translate(8px, 8px);
+            box-shadow: 0px 0px 0px 0px #000000;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f9f9f9;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-on-surface": "#f1f1f1",
+                      "primary-container": "#1b1b1b",
+                      "on-surface": "#1b1b1b",
+                      "tertiary": "#000000",
+                      "on-primary-fixed-variant": "#474747",
+                      "outline-variant": "#cfc4c5",
+                      "secondary-container": "#dfe0e0",
+                      "inverse-primary": "#c6c6c6",
+                      "surface-container-highest": "#e2e2e2",
+                      "on-error-container": "#93000a",
+                      "primary-fixed": "#e2e2e2",
+                      "primary-fixed-dim": "#c6c6c6",
+                      "secondary-fixed-dim": "#c6c6c7",
+                      "on-primary": "#ffffff",
+                      "surface-container-high": "#e8e8e8",
+                      "error-container": "#ffdad6",
+                      "surface": "#f9f9f9",
+                      "on-tertiary": "#ffffff",
+                      "inverse-surface": "#303030",
+                      "surface-dim": "#dadada",
+                      "on-primary-fixed": "#1b1b1b",
+                      "secondary": "#5d5f5f",
+                      "surface-bright": "#f9f9f9",
+                      "on-secondary-fixed-variant": "#454747",
+                      "on-tertiary-fixed": "#221b00",
+                      "on-tertiary-container": "#9b8200",
+                      "tertiary-container": "#221b00",
+                      "error": "#ba1a1a",
+                      "on-secondary-fixed": "#1a1c1c",
+                      "on-primary-container": "#848484",
+                      "background": "#f9f9f9",
+                      "outline": "#7e7576",
+                      "surface-variant": "#e2e2e2",
+                      "tertiary-fixed": "#00b5ad",
+                      "on-tertiary-fixed-variant": "#003b39",
+                      "secondary-fixed": "#e2e2e2",
+                      "primary": "#000000",
+                      "on-secondary": "#ffffff",
+                      "surface-container": "#eeeeee",
+                      "on-secondary-container": "#616363",
+                      "on-error": "#ffffff",
+                      "on-background": "#1b1b1b",
+                      "surface-tint": "#5e5e5e",
+                      "on-surface-variant": "#4c4546",
+                      "tertiary-fixed-dim": "#00968f",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-low": "#f3f3f3"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "xxl": "48px",
+                      "xl": "32px",
+                      "lg": "24px",
+                      "sm": "8px",
+                      "huge": "64px",
+                      "md": "16px"
+              },
+              "fontFamily": {
+                      "display": ["Space Grotesk"],
+                      "body-mobile": ["Space Grotesk"],
+                      "title": ["Space Grotesk"],
+                      "display-mobile": ["Space Grotesk"],
+                      "label": ["Space Grotesk"],
+                      "headline": ["Space Grotesk"],
+                      "headline-mobile": ["Space Grotesk"],
+                      "body": ["Space Grotesk"]
+              },
+              "fontSize": {
+                      "display": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-mobile": ["16px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                      "title": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                      "display-mobile": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "label": ["14px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "headline": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "headline-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "body": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="font-body text-on-surface">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface border-b-4 border-primary flex justify-between items-center h-16 px-6">
+<div class="font-headline text-2xl font-black uppercase text-primary tracking-tighter">
+        RAW AC REPAIR
+    </div>
+<nav class="hidden md:flex space-x-8">
+<a class="font-headline font-bold uppercase tracking-tighter text-on-surface-variant hover:text-primary transition-colors" href="#">GUIDES</a>
+<a class="font-headline font-bold uppercase tracking-tighter text-on-surface-variant hover:text-primary transition-colors" href="#">PARTS</a>
+<a class="font-headline font-bold uppercase tracking-tighter text-primary border-b-4 border-primary pb-1" href="#">DIAGNOSTICS</a>
+<a class="font-headline font-bold uppercase tracking-tighter text-on-surface-variant hover:text-primary transition-colors" href="#">TECHS</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center gap-2 px-3 py-1 bg-tertiary-fixed border-2 border-primary font-bold text-xs">
+<span class="material-symbols-outlined text-sm">settings_input_component</span>
+            STEP 0: START
+        </div>
+<button class="bg-primary text-on-primary font-headline font-bold px-4 py-2 uppercase hover:bg-neutral-800 transition-colors">
+            GET STARTED
+        </button>
+</div>
+</header>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="bg-tertiary-fixed border-b-4 border-primary pt-xxl pb-huge px-6">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-8">
+<h1 class="font-display text-display-mobile md:text-display uppercase mb-md leading-none text-primary">
+                    REPAIR YOUR AC <br/>WITH <span class="bg-primary text-on-primary px-4">CONFIDENCE</span>
+</h1>
+<p class="font-headline text-title md:text-headline max-w-2xl mb-lg">
+                    90% of AC failures are simple electrical parts. You can fix it today.
+                </p>
+<!-- Search/Entry Cluster -->
+<div class="bg-surface border-4 border-primary p-md md:p-lg hard-shadow max-w-3xl">
+<label class="font-label uppercase mb-2 block">UNIT IDENTIFICATION</label>
+<div class="flex flex-col md:flex-row gap-xs">
+<input class="flex-grow p-md border-4 border-primary font-bold text-lg uppercase focus:ring-0 focus:border-black placeholder:text-neutral-400" placeholder="ENTER A/C BRAND, MODEL, OR SERIAL NUMBER" type="text"/>
+<button class="bg-primary text-on-primary font-display px-lg py-md text-xl uppercase press-effect-lg hard-shadow-sm flex items-center justify-center gap-2 group">
+                            START DIAGNOSIS
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 hidden lg:block">
+<div class="relative w-full aspect-square border-4 border-primary bg-surface hard-shadow overflow-hidden">
+<img class="w-full h-full object-cover grayscale contrast-125" data-alt="A high-contrast, professional studio photograph of a modern air conditioning compressor unit interior, showcasing clean copper pipes, electrical coils, and industrial mechanical components. The image uses a stark, brutalist aesthetic with harsh dramatic shadows and bright highlights on the metallic surfaces. The color palette is strictly monochrome with a hint of industrial yellow, conveying precision and technical clarity for a repair manual context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcoqRla_z0F4vexNciprmGSy42WboW-U1HUAEygKDCd0O7r8eVI3KIx3yAWtSpTuz_3auLvQBCs4KVz-SeYiajZByuZ3p1GHjWk4dPaQc_QUUVSI2ca3ksezNh5Qdvp6vaMEB03vu2w7VWHdH8a9XCQn_4Sv2hjlvTZXseoyBc43zdmY7F2rJC6-_xrOswkRIPjv9WjySOAWtJKn-Ydu9nlZQvJ5oRdzs8CBbldlpvrg4pkq0729xn4p_MO0tA_LqxtazMXVfPCIE6"/>
+<div class="absolute bottom-4 left-4 bg-primary text-on-primary p-2 font-bold uppercase text-xs">
+                        SYSTEM DIAGRAM 04-A
+                    </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Secondary Navigation Grid -->
+<section class="px-6 py-xxl max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
+<!-- Video Library -->
+<a class="group block border-4 border-primary p-lg bg-surface hard-shadow press-effect hover:bg-primary hover:text-on-primary transition-all duration-100" href="#">
+<span class="material-symbols-outlined text-4xl mb-md">play_circle</span>
+<h3 class="font-headline text-title uppercase mb-sm">Video Library</h3>
+<p class="font-body text-sm opacity-70">Visual teardowns and step-by-step part replacements for all major brands.</p>
+</a>
+<!-- Order Tracking -->
+<a class="group block border-4 border-primary p-lg bg-surface hard-shadow press-effect hover:bg-primary hover:text-on-primary transition-all duration-100" href="#">
+<span class="material-symbols-outlined text-4xl mb-md">local_shipping</span>
+<h3 class="font-headline text-title uppercase mb-sm">Order Tracking</h3>
+<p class="font-body text-sm opacity-70">Check the status of your OEM replacement parts and logistics timeline.</p>
+</a>
+<!-- Find a Technician -->
+<a class="group block border-4 border-primary p-lg bg-surface hard-shadow press-effect hover:bg-primary hover:text-on-primary transition-all duration-100" href="#">
+<span class="material-symbols-outlined text-4xl mb-md">engineering</span>
+<h3 class="font-headline text-title uppercase mb-sm">Find a Tech</h3>
+<p class="font-body text-sm opacity-70">Too complex? Connect with certified local technicians for hands-on assistance.</p>
+</a>
+<!-- About Us -->
+<a class="group block border-4 border-primary p-lg bg-surface hard-shadow press-effect hover:bg-primary hover:text-on-primary transition-all duration-100" href="#">
+<span class="material-symbols-outlined text-4xl mb-md">info</span>
+<h3 class="font-headline text-title uppercase mb-sm">About Us</h3>
+<p class="font-body text-sm opacity-70">Our mission is to end the cycle of unnecessary unit replacements through education.</p>
+</a>
+</div>
+</section>
+<!-- Technical Specs / Data Strip -->
+<section class="border-y-4 border-primary overflow-hidden bg-primary text-on-primary py-sm whitespace-nowrap">
+<div class="flex animate-marquee gap-huge items-center uppercase font-bold text-xs tracking-widest">
+<span>HVAC PROTOCOL V.4.02</span>
+<span>•</span>
+<span>VOLTAGE WARNING: 240V SYSTEMS</span>
+<span>•</span>
+<span>OEM CERTIFIED PARTS ONLY</span>
+<span>•</span>
+<span>DIAGNOSTIC ENGINE: READY</span>
+<span>•</span>
+<span>HVAC PROTOCOL V.4.02</span>
+<span>•</span>
+<span>VOLTAGE WARNING: 240V SYSTEMS</span>
+<span>•</span>
+<span>OEM CERTIFIED PARTS ONLY</span>
+<span>•</span>
+<span>DIAGNOSTIC ENGINE: READY</span>
+</div>
+</section>
+<style>
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 20s linear infinite;
+        }
+    </style>
+<!-- Detailed Guide Entry (Asymmetric Layout) -->
+<section class="px-6 py-huge max-w-7xl mx-auto">
+<div class="flex flex-col lg:flex-row gap-xl items-stretch">
+<div class="lg:w-1/2 flex flex-col justify-center">
+<div class="border-l-8 border-primary pl-lg">
+<span class="font-label text-error uppercase mb-sm block">Critical Protocol</span>
+<h2 class="font-headline text-headline-mobile md:text-headline uppercase mb-md leading-tight">Identify the failure <br/>before you buy.</h2>
+<p class="font-body text-lg mb-lg">Don't guess. Our diagnostic tool matches your unit's symptoms to specific faulty components, saving you hundreds in "trial and error" parts buying.</p>
+<button class="bg-surface border-4 border-primary px-lg py-md font-bold uppercase hard-shadow press-effect flex items-center gap-4">
+                        Learn the Basics
+                        <span class="material-symbols-outlined">menu_book</span>
+</button>
+</div>
+</div>
+<div class="lg:w-1/2">
+<div class="grid grid-cols-2 gap-md h-full">
+<div class="border-4 border-primary aspect-square bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A macro shot of a metallic air conditioner capacitor with technical specifications printed on the side, showing terminal connections. The lighting is harsh and industrial, emphasizing the texture of the metal and the precision of the electrical component. High contrast black and white photography that fits a brutalist industrial repair manual aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3M8r5K13-5Qcm0hib-HO9sjhvF-MU0YKyWvXeX2hNSb2M4JO7M_RAlCby0Nb8FMTBdHxj6C_ITimFRcqVwuVUPL9j5Ekh1yE3cMFY1lLyffzrthChEd-Kw8RhfchITiwtnltaohOyYoGUnk6U1JylU7U26CzqdeFBDTQ2JB57m97C8UheCK7WW4SrF6gmdiu5lVBHCU4yddyg8Lz2sacTpvTf35nJI0I71dU2p-TZlRHzzdfoS2JCNOmRt1WRQ3oWO6h4-_B9EU-O"/>
+</div>
+<div class="border-4 border-primary aspect-square bg-surface-container overflow-hidden mt-xl">
+<img class="w-full h-full object-cover" data-alt="Close-up of a multimeter measuring voltage on an air conditioning control board. Professional industrial photography style, sharp focus on the digital readout and the copper probes against the green circuit board. Stark shadows and high-key lighting for maximum clarity and an engineering feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAREACuTYtAaQRFXG0zn18TyQ-BEBdBPaJoRkMVdWKihCjuvzN-8-nPQO1lNDkGgPYoICe_QvWe8T6SEBfrZljZqDOi7iiz1hywf6Ox8FfYYokCtptU_vDNnh3G9BVih_A8qK1_FeroyG0gqN6z925yVnbYzQDDYzjMh0vdoSCrRuZOI9iTFa5i4hXyU5lLmLlnfLOk0FkHUvZkiUsbFEofJ9wl_1s70-pwbXTuz1Z-GY2CmXHUwICSCqD1S2Cr1rFMwt5GKGyBIvFc"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary text-on-primary mt-huge">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 p-12 border-t-4 border-primary max-w-7xl mx-auto">
+<div class="space-y-4">
+<div class="font-headline text-lg font-black uppercase">RAW AC REPAIR</div>
+<p class="font-body text-xs uppercase tracking-widest opacity-70">
+                Providing structural clarity and mechanical empowerment since 2024.
+            </p>
+</div>
+<div class="flex flex-col space-y-2">
+<span class="font-label mb-2 border-b border-white/20 pb-1">NAVIGATION</span>
+<a class="font-body text-xs uppercase tracking-widest opacity-70 hover:opacity-100 transition-opacity" href="#">SITEMAP</a>
+<a class="font-body text-xs uppercase tracking-widest opacity-70 hover:opacity-100 transition-opacity" href="#">LEGAL</a>
+<a class="font-body text-xs uppercase tracking-widest text-on-primary underline" href="#">SAFETY PROTOCOLS</a>
+<a class="font-body text-xs uppercase tracking-widest opacity-70 hover:opacity-100 transition-opacity" href="#">API</a>
+<a class="font-body text-xs uppercase tracking-widest opacity-70 hover:opacity-100 transition-opacity" href="#">CONTACT</a>
+</div>
+<div class="space-y-4 border-l-0 md:border-l border-white/20 md:pl-8">
+<div class="flex items-start gap-3 bg-white/10 p-4 border border-white/20">
+<span class="material-symbols-outlined text-error">warning</span>
+<p class="font-body text-xs uppercase leading-relaxed">
+                    VOLTAGE WARNING: HIGH VOLTAGE SYSTEMS REQUIRE CERTIFIED HANDLING. ALWAYS DISCONNECT POWER BEFORE OPENING CABINET.
+                </p>
+</div>
+<div class="font-body text-[10px] uppercase opacity-50">
+                © 2024 THE RAW EDITORIAL AC REPAIR.
+            </div>
+</div>
+</div>
+</footer>
+<!-- FAB -->
+<button class="fixed bottom-8 right-8 bg-tertiary-fixed text-primary w-16 h-16 border-4 border-primary hard-shadow press-effect flex items-center justify-center z-50 group">
+<span class="material-symbols-outlined text-3xl group-hover:rotate-12 transition-transform">build</span>
+</button>
+</body></html>

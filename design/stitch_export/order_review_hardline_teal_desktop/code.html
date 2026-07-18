@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Review | RAW AC REPAIR</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-on-surface": "#f1f1f1",
+                    "primary-container": "#1b1b1b",
+                    "on-surface": "#1b1b1b",
+                    "tertiary": "#000000",
+                    "on-primary-fixed-variant": "#474747",
+                    "outline-variant": "#cfc4c5",
+                    "secondary-container": "#dfe0e0",
+                    "inverse-primary": "#c6c6c6",
+                    "surface-container-highest": "#e2e2e2",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#e2e2e2",
+                    "primary-fixed-dim": "#c6c6c6",
+                    "secondary-fixed-dim": "#c6c6c7",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#e8e8e8",
+                    "error-container": "#ffdad6",
+                    "surface": "#f9f9f9",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#303030",
+                    "surface-dim": "#dadada",
+                    "on-primary-fixed": "#1b1b1b",
+                    "secondary": "#5d5f5f",
+                    "surface-bright": "#f9f9f9",
+                    "on-secondary-fixed-variant": "#454747",
+                    "on-tertiary-fixed": "#221b00",
+                    "on-tertiary-container": "#9b8200",
+                    "tertiary-container": "#221b00",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed": "#1a1c1c",
+                    "on-primary-container": "#848484",
+                    "background": "#f9f9f9",
+                    "outline": "#7e7576",
+                    "surface-variant": "#e2e2e2",
+                    "tertiary-fixed": "#ffe16d",
+                    "on-tertiary-fixed-variant": "#544600",
+                    "secondary-fixed": "#e2e2e2",
+                    "primary": "#000000",
+                    "on-secondary": "#ffffff",
+                    "surface-container": "#eeeeee",
+                    "on-secondary-container": "#616363",
+                    "on-error": "#ffffff",
+                    "on-background": "#1b1b1b",
+                    "surface-tint": "#5e5e5e",
+                    "on-surface-variant": "#4c4546",
+                    "tertiary-fixed-dim": "#e9c400",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#f3f3f3",
+                    "brand-teal": "#008080"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "xxl": "48px",
+                    "xl": "32px",
+                    "lg": "24px",
+                    "sm": "8px",
+                    "huge": "64px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "display": ["Space Grotesk"],
+                    "body-mobile": ["Space Grotesk"],
+                    "title": ["Space Grotesk"],
+                    "display-mobile": ["Space Grotesk"],
+                    "label": ["Space Grotesk"],
+                    "headline": ["Space Grotesk"],
+                    "headline-mobile": ["Space Grotesk"],
+                    "body": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "display": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-mobile": ["16px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                    "title": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "display-mobile": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label": ["14px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Space Grotesk', sans-serif; }
+        .brutalist-shadow-sm { box-shadow: 4px 4px 0px #000000; }
+        .brutalist-shadow-md { box-shadow: 8px 8px 0px #000000; }
+        .brutalist-shadow-lg { box-shadow: 12px 12px 0px #000000; }
+        .active-press:active { transform: translate(4px, 4px); box-shadow: 0px 0px 0px #000000; }
+        .active-press-lg:active { transform: translate(8px, 8px); box-shadow: 0px 0px 0px #000000; }
+        
+        /* Custom Checkbox for Brutalist Style */
+        input[type="checkbox"] {
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border: 3px solid black;
+            background: white;
+            cursor: pointer;
+            position: relative;
+        }
+        input[type="checkbox"]:checked {
+            background: #008080;
+        }
+        input[type="checkbox"]:checked::after {
+            content: '✓';
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center h-16 px-6 w-full bg-surface dark:bg-surface border-b-4 border-primary dark:border-primary-fixed">
+<div class="font-headline text-2xl font-black uppercase text-primary dark:text-on-primary-fixed">RAW AC REPAIR</div>
+<div class="hidden md:flex gap-8 items-center h-full">
+<a class="font-body text-sm text-on-surface-variant dark:text-secondary-fixed-dim font-medium hover:bg-primary hover:text-on-primary transition-colors duration-100 px-2 h-full flex items-center" href="#">GUIDES</a>
+<a class="font-body text-sm text-on-surface-variant dark:text-secondary-fixed-dim font-medium hover:bg-primary hover:text-on-primary transition-colors duration-100 px-2 h-full flex items-center" href="#">PARTS</a>
+<a class="font-body text-sm text-on-surface-variant dark:text-secondary-fixed-dim font-medium hover:bg-primary hover:text-on-primary transition-colors duration-100 px-2 h-full flex items-center" href="#">DIAGNOSTICS</a>
+<a class="font-body text-sm text-on-surface-variant dark:text-secondary-fixed-dim font-medium hover:bg-primary hover:text-on-primary transition-colors duration-100 px-2 h-full flex items-center" href="#">TECHS</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-primary text-on-primary px-4 py-2 font-headline font-bold uppercase tracking-tighter text-sm brutalist-shadow-sm active-press">GET STARTED</button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-24 pb-xxl px-6 max-w-7xl mx-auto w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xl">
+<!-- Main Area: Review Your Order -->
+<div class="lg:col-span-8">
+<header class="bg-brand-teal border-[5px] border-black p-lg mb-xl brutalist-shadow-md">
+<h1 class="font-headline text-headline font-bold uppercase tracking-tighter text-white">Review Your Order</h1>
+</header>
+<!-- Line Items Container -->
+<div class="space-y-lg">
+<!-- Selected Part Card -->
+<div class="bg-white border-[5px] border-black p-lg brutalist-shadow-md flex flex-col md:flex-row gap-lg">
+<div class="w-full md:w-48 h-48 border-[3px] border-black overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A professional close-up photograph of a heavy-duty air conditioning compressor capacitor, featuring brushed metal surfaces and technical labeling. The lighting is harsh and industrial, casting strong shadows that highlight the textures of the mechanical component. The composition is centered and clean, following an industrial brutalist aesthetic with high contrast and stark clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7lAY1v0XnD92Ad2Vu7oFfE-xWm3b_ImqUdwVimu6QdVHPBTKOtbgYkvhDe5SZS5ayW9w4jiVmz0-DRvaU44HpqEL5CBbpSkCy8lfqjxcWnHZNSVdz8tHVkFN131-5QOs-e1Y3GBPjAZ-tu0YTF9VmD8ICFryzFGuglnYP2pq57GoWiPFX-shvtZFVbkqV9NgAKIXCSm2NKLGtNBiSgBnO0mycbC_KPMUzWwBxutJozilP-KvmagOxsPAvgF2__JYddYHoT6jZvoGx"/>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div>
+<span class="font-label text-label uppercase bg-primary text-on-primary px-2 py-1 mb-2 inline-block">SKU: 9920-XJ-BRUT</span>
+<h2 class="font-title text-title uppercase mb-1">Industrial Grade Starter Capacitor</h2>
+<p class="font-body text-sm opacity-70">Compatible with 3.5 - 5.0 Ton AC units. High-heat tolerance coating.</p>
+</div>
+<div class="flex justify-between items-end mt-4">
+<div class="font-headline text-title">$84.50</div>
+<div class="font-label text-label border-[3px] border-black px-4 py-1">QTY: 1</div>
+</div>
+</div>
+</div>
+<!-- Installation Pack Section -->
+<div class="bg-white border-[5px] border-black p-lg brutalist-shadow-md">
+<h3 class="font-headline text-2xl uppercase mb-lg border-b-[5px] border-black pb-2">Installation Pack</h3>
+<p class="font-body text-sm mb-lg uppercase font-bold text-secondary">Select mandatory high-voltage handling components:</p>
+<div class="space-y-4">
+<!-- Toolset -->
+<label class="flex items-center gap-md p-md border-[3px] border-black cursor-pointer hover:bg-surface-container transition-colors group">
+<input checked="" class="form-checkbox" type="checkbox"/>
+<div class="flex-grow">
+<div class="font-label text-md uppercase">PRO-GRADE TOOL KIT</div>
+<div class="font-body text-xs opacity-60">INSULATED PLIERS, VOLTAGE TESTER, PRECISION DRIVER.</div>
+</div>
+<div class="font-headline text-lg">$24.00</div>
+</label>
+<!-- Wire Nuts -->
+<label class="flex items-center gap-md p-md border-[3px] border-black cursor-pointer hover:bg-surface-container transition-colors group">
+<input checked="" class="form-checkbox" type="checkbox"/>
+<div class="flex-grow">
+<div class="font-label text-md uppercase">CERAMIC WIRE NUTS (PACK OF 10)</div>
+<div class="font-body text-xs opacity-60">UL-CERTIFIED HIGH TEMPERATURE RESISTANCE.</div>
+</div>
+<div class="font-headline text-lg">$8.50</div>
+</label>
+<!-- Terminals -->
+<label class="flex items-center gap-md p-md border-[3px] border-black cursor-pointer hover:bg-surface-container transition-colors group">
+<input class="form-checkbox" type="checkbox"/>
+<div class="flex-grow">
+<div class="font-label text-md uppercase">CRIMP TERMINAL ASSORTMENT</div>
+<div class="font-body text-xs opacity-60">CORROSION-RESISTANT COPPER CONNECTORS.</div>
+</div>
+<div class="font-headline text-lg">$12.00</div>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Summary Sidebar -->
+<aside class="lg:col-span-4 space-y-xl">
+<div class="bg-white border-[5px] border-black p-lg brutalist-shadow-lg sticky top-24">
+<h2 class="font-headline text-title uppercase mb-xl border-b-[5px] border-black pb-sm">Order Summary</h2>
+<div class="space-y-4 mb-xl">
+<div class="flex justify-between font-label uppercase">
+<span>Items Subtotal</span>
+<span>$117.00</span>
+</div>
+<div class="flex justify-between font-label uppercase">
+<span>Tax (Estimated)</span>
+<span>$9.36</span>
+</div>
+<div class="flex justify-between font-label uppercase text-on-error">
+<span>Shipping</span>
+<span>FREE</span>
+</div>
+<div class="border-t-[3px] border-black pt-4 flex justify-between font-headline text-3xl">
+<span>TOTAL</span>
+<span>$126.36</span>
+</div>
+</div>
+<!-- Trust Signal -->
+<div class="bg-brand-teal text-white p-md flex items-center gap-md mb-xl">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+<div class="font-label text-xs uppercase leading-tight">Certified Parts.<br/>Guaranteed Fit.</div>
+</div>
+<!-- CTA -->
+<button class="w-full bg-primary text-on-primary py-huge font-headline text-2xl uppercase tracking-widest brutalist-shadow-md active-press-lg hover:scale-[1.02] transition-transform flex items-center justify-center gap-sm">
+                        Continue to Checkout
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<p class="mt-lg font-body text-[10px] text-center uppercase opacity-50">By clicking you agree to our safety protocols and handling waivers.</p>
+</div>
+<!-- Secondary Trust Box -->
+<div class="border-[5px] border-black p-lg bg-surface-container">
+<h4 class="font-label uppercase mb-2">Technical Support Included</h4>
+<p class="font-body text-xs opacity-70">Every order includes 24/7 access to our emergency diagnostic terminal and certified HVAC technicians.</p>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-auto bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container border-t-4 border-primary">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 p-12 w-full">
+<div class="flex flex-col gap-4">
+<div class="font-headline text-lg font-black text-on-primary uppercase">RAW AC REPAIR</div>
+<p class="font-body text-xs uppercase tracking-widest opacity-70 leading-relaxed">
+                    © 2024 THE RAW EDITORIAL AC REPAIR. VOLTAGE WARNING: HIGH VOLTAGE SYSTEMS REQUIRE CERTIFIED HANDLING.
+                </p>
+</div>
+<div class="flex flex-wrap gap-x-8 gap-y-4">
+<a class="font-body text-xs uppercase tracking-widest text-on-primary opacity-70 hover:opacity-100 transition-opacity" href="#">SITEMAP</a>
+<a class="font-body text-xs uppercase tracking-widest text-on-primary opacity-70 hover:opacity-100 transition-opacity" href="#">LEGAL</a>
+<a class="font-body text-xs uppercase tracking-widest text-on-primary opacity-70 hover:opacity-100 transition-opacity" href="#">SAFETY PROTOCOLS</a>
+<a class="font-body text-xs uppercase tracking-widest text-on-primary opacity-70 hover:opacity-100 transition-opacity" href="#">API</a>
+<a class="font-body text-xs uppercase tracking-widest text-on-primary opacity-70 hover:opacity-100 transition-opacity" href="#">CONTACT</a>
+</div>
+<div class="flex justify-end items-start">
+<div class="border-2 border-on-primary p-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">shield_lock</span>
+<span class="font-body text-[10px] uppercase tracking-tighter">SECURE INDUSTRIAL ENCRYPTION</span>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction: Update total when checkboxes change (simplified logic)
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        
+        checkboxes.forEach(cb => {
+            cb.addEventListener('change', () => {
+                // Here you would normally recalculate values
+                // For this demo, we just trigger a little bounce effect on the total
+                const totalEl = document.querySelector('.font-headline.text-3xl span:last-child');
+                totalEl.classList.add('scale-110', 'text-brand-teal');
+                setTimeout(() => {
+                    totalEl.classList.remove('scale-110', 'text-brand-teal');
+                }, 200);
+            });
+        });
+    </script>
+</body></html>

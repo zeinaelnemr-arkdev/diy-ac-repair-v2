@@ -1,0 +1,59 @@
+# Accessibility Audit Report: DIY A/C Repair (Hardline Teal Theme)
+
+## 1. Overview
+This audit evaluates 10 key screens from the "Hardline Teal" iteration of the DIY A/C Repair application against Web Content Accessibility Guidelines (WCAG) 2.1 Level AA standards.
+
+### Audited Screens:
+- Home (Desktop & Mobile)
+- Diagnose (Desktop)
+- Technical Spec Selection (Desktop & Mobile)
+- Parts Selection (Desktop)
+- Order Review (Desktop)
+- Checkout (Desktop)
+- Order Tracking (Desktop)
+- Find Tech (Mobile)
+
+---
+
+## 2. Key Findings & Analysis
+
+### A. Perception (Visual & Content)
+1. **Color Contrast (Success Criterion 1.4.3):**
+   - **Pass:** The primary "Hardline" palette (Pure Black #000000 on White #FFFFFF) provides maximum contrast (21:1), far exceeding the 4.5:1 requirement.
+   - **Warning:** The teal accent (#20B2AA) used for active states and highlights should be verified against white background. If used for text, it may require a darker shade to ensure readability for low-vision users.
+2. **Non-Text Content (Success Criterion 1.1.1):**
+   - **Finding:** Hero images and technical diagrams (e.g., the capacitor photo in Order Review) need descriptive `alt` text. Decorative industrial elements (slashes, grid lines) should have `aria-hidden="true"`.
+
+### B. Operability (Navigation & Interaction)
+1. **Keyboard Navigability (Success Criterion 2.1.1):**
+   - **Finding:** Custom components like the "Step 0: Start" pill and custom radio buttons in Spec Selection must be keyboard-accessible.
+   - **Recommendation:** Use native `<button>` or `<input>` elements where possible, or ensure `tabindex="0"` and `role="button"` are applied with appropriate JavaScript event listeners.
+2. **Focus Visible (Success Criterion 2.4.7):**
+   - **Observation:** The "Industrial Brutalist" style often removes default browser focus rings. 
+   - **Recommendation:** Implement high-contrast custom focus states (e.g., a thick black or teal border) to ensure users know where they are on the page.
+
+### C. Understandability (Input & Clarity)
+1. **Error Identification (Success Criterion 3.3.1):**
+   - **Observation:** The Checkout and Spec Entry screens use labels, which is excellent. 
+   - **Recommendation:** Ensure real-time validation errors are announced via `aria-live="polite"` so screen reader users are notified of submission issues immediately.
+2. **Labels and Instructions (Success Criterion 3.3.2):**
+   - **Pass:** Technical specs (RPM, HP, Voltage) are clearly labeled.
+
+### D. Robustness (Code Quality)
+1. **Semantic HTML:**
+   - **Finding:** Ensure the multi-step "Diagnosis" process uses `<nav>` or `<ol>` with `aria-current="step"` to provide structural context to assistive technologies.
+
+---
+
+## 3. Actionable Recommendations
+
+| Issue Type | Recommendation |
+| :--- | :--- |
+| **Images** | Add descriptive `alt` text to all product and diagnostic images. |
+| **Interactive** | Verify all "Teal" buttons have a distinct keyboard focus state. |
+| **Forms** | Ensure `<label>` elements are explicitly linked to `<input>` IDs. |
+| **Structure** | Use `aria-live` for the "Current Status" warning bars on Home/Diagnostics. |
+| **Mobile** | Ensure the mobile hamburger menu and "Next" sticky bar follow correct ARIA patterns for expanded/collapsed states. |
+
+---
+**Status:** High Accessibility Potential. The high-contrast nature of the Brutalist design provides an excellent foundation, requiring only minor technical ARIA and focus-state implementations to reach full compliance.
