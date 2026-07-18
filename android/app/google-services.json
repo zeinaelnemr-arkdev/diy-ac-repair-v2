@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "395663915071",
+    "project_id": "diy-ac-44e10",
+    "storage_bucket": "diy-ac-44e10.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:395663915071:android:64f351cb2a42b450f6608a",
+        "android_client_info": {
+          "package_name": "com.mycompany.diyacweb"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWqdzCtbjJrCa67n93GQZ5Z1_fSrl0fZo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

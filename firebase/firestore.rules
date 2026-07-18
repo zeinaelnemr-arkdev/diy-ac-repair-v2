@@ -1,0 +1,116 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /user/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if request.auth != null;
+    }
+
+    match /ACMake/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /ACModel/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /FanSpec/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /ContactorSpec/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /Misc/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /SpecMisc/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /Items/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /orders/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if request.auth != null;
+    }
+
+    match /mail/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /MotorSpec/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /CapacitorSpec/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /subscriber/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /settings/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /DiagnosisVideo/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /diagnosisVideoOption/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+  }
+}
