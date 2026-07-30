@@ -67,21 +67,26 @@ class _S12FooterWidgetState extends State<S12FooterWidget> {
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Container(
-                        width: 100.0,
-                        height: double.infinity,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: FlutterFlowTheme.of(context).primary,
-                            width: 1.0,
+                      InkWell(
+                        onTap: () async {
+                          context.goNamed(AHomePageWidget.routeName);
+                        },
+                        child: Container(
+                          width: 100.0,
+                          height: double.infinity,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context).primary,
+                              width: 1.0,
+                            ),
                           ),
-                        ),
-                        child: Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
-                          child: Icon(
-                            Icons.toll,
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            size: 30.0,
+                          child: Align(
+                            alignment: AlignmentDirectional(0.0, 0.0),
+                            child: Icon(
+                              Icons.toll,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              size: 30.0,
+                            ),
                           ),
                         ),
                       ),
@@ -101,7 +106,7 @@ class _S12FooterWidgetState extends State<S12FooterWidget> {
                                 4,
                               ),
                             ),
-                            itemCount: 4,
+                            itemCount: 5,
                             shrinkWrap: true,
                             itemBuilder: (context, index) {
                               return [
@@ -209,7 +214,7 @@ class _S12FooterWidgetState extends State<S12FooterWidget> {
                                             DSelectProductRepairWidget
                                                 .routeName);
                                       },
-                                      text: 'SERVICES',
+                                      text: 'ORDER PARTS',
                                       options: FFButtonOptions(
                                         height: valueOrDefault<double>(
                                           MediaQuery.sizeOf(context).width <
@@ -302,6 +307,56 @@ class _S12FooterWidgetState extends State<S12FooterWidget> {
                                       ),
                                       showLoadingIndicator: false,
                                     ),
+                                () => FFButtonWidget(
+                                      onPressed: () async {
+                                        context.pushNamed(
+                                            GTrackAndFindMyOrderWidget
+                                                .routeName);
+                                      },
+                                      text: 'TRACK ORDERS',
+                                      options: FFButtonOptions(
+                                        height: valueOrDefault<double>(
+                                          MediaQuery.sizeOf(context).width <
+                                                  kBreakpointLarge
+                                              ? 40.0
+                                              : 80.0,
+                                          80.0,
+                                        ),
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: Colors.transparent,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .labelLarge
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLargeFamily,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .labelLargeIsCustom,
+                                            ),
+                                        elevation: 0.0,
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(0.0),
+                                        hoverTextColor:
+                                            FlutterFlowTheme.of(context)
+                                                .tertiary,
+                                      ),
+                                      showLoadingIndicator: false,
+                                    ),
                               ][index]();
                             },
                           ),
@@ -319,41 +374,44 @@ class _S12FooterWidgetState extends State<S12FooterWidget> {
                       width: 1.0,
                     ),
                   ),
-                  child: Align(
-                    alignment: AlignmentDirectional(1.0, 0.0),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          25.0, 20.0, 25.0, 20.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Image.asset(
-                            'assets/images/Logo_2.png',
-                            height: 20.0,
-                            fit: BoxFit.contain,
-                          ),
-                          Flexible(
-                            child: AutoSizeText(
-                              '© 2026 THE COMPANY. ALL RIGHTS RESERVED.',
-                              textAlign: TextAlign.end,
-                              style: FlutterFlowTheme.of(context)
-                                  .labelLarge
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .labelLargeFamily,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
-                                    useGoogleFonts:
-                                        !FlutterFlowTheme.of(context)
-                                            .labelLargeIsCustom,
-                                  ),
+                  child: Visibility(
+                    visible: false,
+                    child: Align(
+                      alignment: AlignmentDirectional(1.0, 0.0),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            25.0, 20.0, 25.0, 20.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Image.asset(
+                              'assets/images/Logo_2.png',
+                              height: 20.0,
+                              fit: BoxFit.contain,
                             ),
-                          ),
-                        ].divide(SizedBox(height: 5.0)),
+                            Flexible(
+                              child: AutoSizeText(
+                                '© 2026 THE COMPANY. ALL RIGHTS RESERVED.',
+                                textAlign: TextAlign.end,
+                                style: FlutterFlowTheme.of(context)
+                                    .labelLarge
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .labelLargeFamily,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
+                                      useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                              .labelLargeIsCustom,
+                                    ),
+                              ),
+                            ),
+                          ].divide(SizedBox(height: 5.0)),
+                        ),
                       ),
                     ),
                   ),
@@ -361,6 +419,6 @@ class _S12FooterWidgetState extends State<S12FooterWidget> {
           ][index]();
         },
       ),
-    );
+    ),
   }
 }
