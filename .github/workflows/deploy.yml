@@ -26,6 +26,8 @@ jobs:
 
       - run: flutter pub get
 
+      - run: flutter analyze lib/b_screen_components/s12_footer/s12_footer_widget.dart || true
+
       - run: flutter build web --release --base-href /diy-ac-repair-v2/
 
       - uses: actions/upload-pages-artifact@v3
