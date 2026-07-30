@@ -1,4 +1,3 @@
-import '/b_screen_components/asterisk/asterisk_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -23,21 +22,6 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
   late S02HeadlinesModel _model;
 
   final animationsMap = <String, AnimationInfo>{};
-
-  // Single source of truth for the hero carousel height. Previously the
-  // outer bordered box height was responsive (110 / 144 / 179 by breakpoint)
-  // while the inner CarouselSlider container was hardcoded to 180.0, so on
-  // small/medium screens the carousel content overflowed past the border
-  // and visibly overlapped the text below it during word transitions.
-  double _heroCarouselHeight(BuildContext context) {
-    if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
-      return 110.0;
-    } else if (MediaQuery.sizeOf(context).width < kBreakpointLarge) {
-      return 144.0;
-    } else {
-      return 179.0;
-    }
-  }
 
   @override
   void setState(VoidCallback callback) {
@@ -135,13 +119,14 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 0.0),
                       child: Text(
-                        'FIX YOUR AC WITHOUT THE GUESSWORK',
+                        'WE PROVIDE THE PARTS, TOOLS, AND KNOWLEDGE SO IT HELP YOU FIX YOUR A/C.',
                         style: FlutterFlowTheme.of(context)
                             .headlineMedium
                             .override(
                               fontFamily: FlutterFlowTheme.of(context)
                                   .headlineMediumFamily,
                               color: Color(0xDD000000),
+                              fontSize: 40.0,
                               letterSpacing: MediaQuery.sizeOf(context).width <
                                       kBreakpointSmall
                                   ? FFAppConstants.LetterSpacingM
@@ -155,21 +140,45 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                     Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
-                      child: Container(
-                        width: double.infinity,
-                        height: _heroCarouselHeight(context),
-                        clipBehavior: Clip.hardEdge,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                          border: Border.all(
-                            color: FlutterFlowTheme.of(context).primary,
-                            width: 1.0,
-                          ),
-                        ),
-                        child: Container(
-                          width: double.infinity,
-                          height: _heroCarouselHeight(context),
-                          child: CarouselSlider(
+                      child: Builder(
+                        builder: (context) {
+                          // Single source of truth for this hero box's height
+                          // so the outer border and the inner CarouselSlider
+                          // can never disagree (previously the inner slider
+                          // was hard-coded to 180.0 regardless of screen
+                          // size, which overflowed the outer box and caused
+                          // the rotating word to visibly overlap the text
+                          // below it mid-transition).
+                          final heroCarouselHeight = valueOrDefault<double>(
+                            () {
+                              if (MediaQuery.sizeOf(context).width <
+                                  kBreakpointSmall) {
+                                return 110.0;
+                              } else if (MediaQuery.sizeOf(context).width <
+                                  kBreakpointLarge) {
+                                return 144.0;
+                              } else {
+                                return 179.0;
+                              }
+                            }(),
+                            179.0,
+                          );
+                          return Container(
+                            width: double.infinity,
+                            height: heroCarouselHeight,
+                            clipBehavior: Clip.hardEdge,
+                            decoration: BoxDecoration(
+                              color:
+                                  FlutterFlowTheme.of(context).primaryBackground,
+                              border: Border.all(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 1.0,
+                              ),
+                            ),
+                            child: Container(
+                              width: double.infinity,
+                              height: heroCarouselHeight,
+                              child: CarouselSlider(
                             items: [
                               Align(
                                 alignment: AlignmentDirectional(0.0, 0.0),
@@ -189,8 +198,8 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                                           fontSize: 128.0,
                                           letterSpacing: 0.0,
                                           useGoogleFonts:
-                                              !FlutterFlowTheme.of(context)
-                                                  .displayLargeIsCustom,
+                                             !FlutterFlowTheme.of(context)
+                                                .displayLargeIsCustom,
                                         ),
                                   ),
                                 ),
@@ -201,7 +210,7 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       10.0, 20.0, 10.0, 20.0),
                                   child: AutoSizeText(
-                                    'SOLUTIONS',
+                                    'QUICK DELIVERY',
                                     style: FlutterFlowTheme.of(context)
                                         .displayLarge
                                         .override(
@@ -225,7 +234,7 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       10.0, 20.0, 10.0, 20.0),
                                   child: AutoSizeText(
-                                    'RESULTS',
+                                    'PARTS 2 SPECS',
                                     style: FlutterFlowTheme.of(context)
                                         .displayLarge
                                         .override(
@@ -237,7 +246,7 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
                                           useGoogleFonts:
-                                              !FlutterFlowTheme.of(context)
+                                             !FlutterFlowTheme.of(context)
                                                   .displayLargeIsCustom,
                                         ),
                                   ),
@@ -249,7 +258,7 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       10.0, 20.0, 10.0, 20.0),
                                   child: AutoSizeText(
-                                    'SUCCESS',
+                                    'LOANER TOOLS',
                                     style: FlutterFlowTheme.of(context)
                                         .displayLarge
                                         .override(
@@ -261,7 +270,7 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
                                           useGoogleFonts:
-                                              !FlutterFlowTheme.of(context)
+                                             !FlutterFlowTheme.of(context)
                                                   .displayLargeIsCustom,
                                         ),
                                   ),
@@ -290,6 +299,8 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                             ),
                           ),
                         ),
+                      );
+                        },
                       ),
                     ),
                     RichText(
@@ -308,7 +319,7 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                           ),
                           TextSpan(
                             text:
-                                ', choose the right parts, and get it done — fast and stress-free.',
+                                ', choose the right parts, and get it done — faster and cheaper',
                             style: TextStyle(),
                           )
                         ],
@@ -318,7 +329,7 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                               fontFamily: FlutterFlowTheme.of(context)
                                   .labelMediumFamily,
                               color: FlutterFlowTheme.of(context).primaryText,
-                              fontSize: 28.0,
+                              fontSize: 24.0,
                               letterSpacing: 0.0,
                               useGoogleFonts: !FlutterFlowTheme.of(context)
                                   .labelMediumIsCustom,
@@ -368,41 +379,45 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Text(
+                                AutoSizeText(
                                   'LET’S GET STARTED!',
+                                  minFontSize: 12.0,
                                   style: FlutterFlowTheme.of(context)
-                                      .titleLarge
+                                      .titleMedium
                                       .override(
                                         fontFamily: FlutterFlowTheme.of(context)
-                                            .titleLargeFamily,
+                                            .titleMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .secondary,
-                                        fontSize: 28.0,
                                         letterSpacing: 0.0,
                                         useGoogleFonts:
                                             !FlutterFlowTheme.of(context)
-                                                .titleLargeIsCustom,
+                                                .titleMediumIsCustom,
                                       ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 0.0, 0.0, 0.0),
-                                  child: Icon(
-                                    Icons.arrow_forward,
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
-                                    size: valueOrDefault<double>(
-                                      MediaQuery.sizeOf(context).width <
-                                              kBreakpointSmall
-                                          ? 20.0
-                                          : 44.0,
-                                      44.0,
+                                if (responsiveVisibility(
+                                  context: context,
+                                  phone: false,
+                                ))
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 0.0, 0.0),
+                                    child: Icon(
+                                      Icons.arrow_forward,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondary,
+                                      size: valueOrDefault<double>(
+                                        MediaQuery.sizeOf(context).width <
+                                               kBreakpointSmall
+                                            ? 20.0
+                                            : 44.0,
+                                        44.0,
+                                      ),
+                                    ).animateOnActionTrigger(
+                                      animationsMap[
+                                          'iconOnActionTriggerAnimation']!,
                                     ),
-                                  ).animateOnActionTrigger(
-                                    animationsMap[
-                                        'iconOnActionTriggerAnimation']!,
                                   ),
-                                ),
                               ],
                             ),
                           ),
@@ -464,16 +479,6 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
               }(),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-              ),
-              child: Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
-                child: wrapWithModel(
-                  model: _model.asteriskModel,
-                  updateCallback: () => safeSetState(() {}),
-                  child: AsteriskWidget(
-                    asteriskColor: Color(0xD30891B2),
-                  ),
-                ),
               ),
             ),
           ],
