@@ -218,7 +218,12 @@ bool get isiOS => !kIsWeb && Platform.isIOS;
 bool get isWeb => kIsWeb;
 
 const kBreakpointSmall = 500.0;
-const kBreakpointMedium = 1024.0;
+// Was hardcoded to the same value as kBreakpointLarge (1024.0), which made
+// every `width < kBreakpointLarge` branch across the app unreachable (the
+// tabletLandscape tier could never be true once tablet was already false at
+// the same width). 768.0 matches iPad portrait width, restoring a real
+// phone / tablet / tabletLandscape / desktop 4-tier system.
+const kBreakpointMedium = 768.0;
 const kBreakpointLarge = 1024.0;
 bool isMobileWidth(BuildContext context) =>
     MediaQuery.sizeOf(context).width < kBreakpointSmall;
@@ -378,6 +383,15 @@ extension StatefulWidgetExtensions on State<StatefulWidget> {
       setState(fn);
     }
   }
+}
+
+String getCORSProxyUrl(String path) {
+  if (!kIsWeb) {
+    return path;
+  }
+  const proxyUrl =
+      'https://us-central1-diy-ac-44e10.cloudfunctions.net/corsProxy?url=';
+  return '$proxyUrl${Uri.encodeComponent(path)}';
 }
 
 // For iOS 16 and below, set the status bar color to match the app's theme.
