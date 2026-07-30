@@ -419,6 +419,6 @@ class _S12FooterWidgetState extends State<S12FooterWidget> {
           ][index]();
         },
       ),
-    ),
+    );
   }
 }
