@@ -139,7 +139,6 @@ class _LUserProfileWidgetState extends State<LUserProfileWidget> {
                                     ),
                                     if (responsiveVisibility(
                                       context: context,
-                                      phone: false,
                                     ))
                                       wrapWithModel(
                                         model: _model.s12FooterModel,
