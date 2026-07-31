@@ -853,7 +853,7 @@ class _ReviewYourOrderDesktopWidgetState
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondary,
-                                                fontSize: 24.0,
+                                                                                                fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 useGoogleFonts:
                                                     !FlutterFlowTheme.of(
@@ -1283,7 +1283,7 @@ class _ReviewYourOrderDesktopWidgetState
                                                     .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .secondary,
-                                            fontSize: 20.0,
+                                                                                            fontSize: 16.0,
                                             letterSpacing: 0.0,
                                             useGoogleFonts:
                                                 !FlutterFlowTheme.of(context)
