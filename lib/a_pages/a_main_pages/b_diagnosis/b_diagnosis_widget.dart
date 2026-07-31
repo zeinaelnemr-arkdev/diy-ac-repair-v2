@@ -199,16 +199,6 @@ class _BDiagnosisWidgetState extends State<BDiagnosisWidget> {
                             ),
                             if (responsiveVisibility(
                               context: context,
-                              tablet: false,
-                              tabletLandscape: false,
-                            ))
-                              wrapWithModel(
-                                model: _model.s04MobileModel,
-                                updateCallback: () => safeSetState(() {}),
-                                child: S04ImageWidget(),
-                              ),
-                            if (responsiveVisibility(
-                              context: context,
                             ))
                               wrapWithModel(
                                 model: _model.s12FooterModel,
