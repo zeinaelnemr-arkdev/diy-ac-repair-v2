@@ -114,7 +114,7 @@ class _S15VideoPlayerMainWidgetState extends State<S15VideoPlayerMainWidget> {
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .labelLargeFamily,
                                   color: FlutterFlowTheme.of(context).primary,
-                                  fontSize: 24.0,
+                                                                fontSize: 16.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w600,
                                   useGoogleFonts: !FlutterFlowTheme.of(context)
