@@ -45,7 +45,7 @@ class _HamburgerNavWidgetState extends State<HamburgerNavWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: Column(
+                body: SingleChildScrollView(child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -96,7 +96,7 @@ class _HamburgerNavWidgetState extends State<HamburgerNavWidget> {
               ),
             ),
             Container(
-              width: 392.0,
+                            width: double.infinity,
               height: 1.0,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).alternate,
@@ -130,7 +130,7 @@ class _HamburgerNavWidgetState extends State<HamburgerNavWidget> {
               ),
             ),
             Container(
-              width: 392.0,
+                            width: double.infinity,
               height: 1.0,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).alternate,
@@ -165,7 +165,7 @@ class _HamburgerNavWidgetState extends State<HamburgerNavWidget> {
               ),
             ),
             Container(
-              width: 392.0,
+                            width: double.infinity,
               height: 1.0,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).alternate,
@@ -200,7 +200,7 @@ class _HamburgerNavWidgetState extends State<HamburgerNavWidget> {
               ),
             ),
             Container(
-              width: 392.0,
+                            width: double.infinity,
               height: 1.0,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).alternate,
@@ -234,7 +234,7 @@ class _HamburgerNavWidgetState extends State<HamburgerNavWidget> {
               ),
             ),
             Container(
-              width: 392.0,
+                            width: double.infinity,
               height: 1.0,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).alternate,
@@ -281,7 +281,7 @@ class _HamburgerNavWidgetState extends State<HamburgerNavWidget> {
               ),
             if (false)
               Container(
-                width: 392.0,
+                                width: double.infinity,
                 height: 1.0,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).alternate,
@@ -308,7 +308,7 @@ class _HamburgerNavWidgetState extends State<HamburgerNavWidget> {
               ),
             ),
           ],
-        ),
+        ),),
       ),
     );
   }
