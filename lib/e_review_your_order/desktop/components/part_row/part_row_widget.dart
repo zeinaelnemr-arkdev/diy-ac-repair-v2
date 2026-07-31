@@ -201,7 +201,7 @@ class _PartRowWidgetState extends State<PartRowWidget> {
                             await actions.calculateCartTotal(
                               null,
                               null,
-                            );
+                                                        ); safeSetState(() {});
                           },
                           stepSize: 1,
                           minimum: 1,
