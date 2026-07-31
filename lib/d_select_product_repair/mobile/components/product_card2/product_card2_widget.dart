@@ -1271,7 +1271,7 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                         Flexible(
                           flex: 1,
                           child: Text(
-                            '\$${widget.price?.toString()}',
+                                                        '\$${widget.price?.toStringAsFixed(2)}',
                             maxLines: 1,
                             style: FlutterFlowTheme.of(context)
                                 .titleLarge
