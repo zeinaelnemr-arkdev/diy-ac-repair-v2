@@ -933,7 +933,7 @@ class _EReviewYourOrderMobileWidgetState
                           ),
                         ),
                         Text(
-                          'Please save it before continue. you can customize tools if you needed.',
+                                                    'Please save before continuing. You can customize tools if you need to.',
                           style: FlutterFlowTheme.of(context)
                               .bodyMedium
                               .override(
