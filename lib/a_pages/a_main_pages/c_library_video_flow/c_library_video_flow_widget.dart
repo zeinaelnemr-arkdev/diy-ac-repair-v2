@@ -240,8 +240,6 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                                             ),
                                                           if (responsiveVisibility(
                                                             context: context,
-                                                            phone: false,
-                                                            tablet: false,
                                                             tabletLandscape:
                                                                 false,
                                                           ))
