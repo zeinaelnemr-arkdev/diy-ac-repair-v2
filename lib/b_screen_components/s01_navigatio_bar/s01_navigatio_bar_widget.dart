@@ -71,11 +71,15 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
-                    child: Icon(
-                      Icons.settings_input_component_rounded,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      size: 24.0,
-                    ),
+                    child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(8.0),
+                                        child: Image.asset(
+                                                              'assets/images/app_launcher_icon.png',
+                                                              width: 32.0,
+                                                              height: 32.0,
+                                                              fit: BoxFit.contain,
+                                                            ),
+                                      ),
                   ),
                   Text(
                     'DIY AC REPAIR',
