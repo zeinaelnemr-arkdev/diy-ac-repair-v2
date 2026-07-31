@@ -135,9 +135,6 @@ class _IAboutWidgetState extends State<IAboutWidget> {
                                     ),
                                     if (responsiveVisibility(
                                       context: context,
-                                      phone: false,
-                                      tablet: false,
-                                      tabletLandscape: false,
                                     ))
                                       wrapWithModel(
                                         model: _model.s12FooterModel,
