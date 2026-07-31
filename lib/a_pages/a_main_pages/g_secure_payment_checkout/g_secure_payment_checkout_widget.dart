@@ -140,9 +140,6 @@ class _GSecurePaymentCheckoutWidgetState
                                 ),
                               if (responsiveVisibility(
                                 context: context,
-                                phone: false,
-                                tablet: false,
-                                tabletLandscape: false,
                               ))
                                 wrapWithModel(
                                   model: _model.s12FooterModel,
