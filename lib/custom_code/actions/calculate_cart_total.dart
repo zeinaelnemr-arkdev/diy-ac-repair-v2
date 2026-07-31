@@ -27,11 +27,11 @@ Future calculateCartTotal(String? shippingStr, String? taxStr) async {
   final double tax = double.tryParse(taxStr ?? '') ?? (cart.tax ?? 0.0);
 
   // Calculate total
-  final double total = subtotal + shipping + tax;
+    final double total = ((subtotal + shipping + tax) * 100).round() / 100;
 
   // Update the payment struct in app state with new subtotal and total
   FFAppState().updateCartStruct((c) => c
-    ..subtotal = subtotal
+        ..subtotal = (subtotal * 100).round() / 100
     ..total = total
     ..shipping = shipping
     ..tax = tax);
