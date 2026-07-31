@@ -126,7 +126,7 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                               fontFamily: FlutterFlowTheme.of(context)
                                   .headlineMediumFamily,
                               color: Color(0xDD000000),
-                              fontSize: 40.0,
+                                                            fontSize: MediaQuery.sizeOf(context).width < kBreakpointSmall ? 26.0 : 40.0,
                               letterSpacing: MediaQuery.sizeOf(context).width <
                                       kBreakpointSmall
                                   ? FFAppConstants.LetterSpacingM
