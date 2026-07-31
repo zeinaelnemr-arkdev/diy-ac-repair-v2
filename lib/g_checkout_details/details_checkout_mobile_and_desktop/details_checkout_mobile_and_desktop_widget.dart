@@ -641,7 +641,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                           ),
                                     ),
                                     Text(
-                                      '\$${FFAppState().Cart.total.toString()}',
+                                                                            '\$${FFAppState().Cart.total.toStringAsFixed(2)}',
                                       style: FlutterFlowTheme.of(context)
                                           .headlineSmall
                                           .override(
