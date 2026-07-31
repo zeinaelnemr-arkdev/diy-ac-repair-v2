@@ -105,7 +105,7 @@ class _BDiagnosisWidgetState extends State<BDiagnosisWidget> {
                 child: Container(
                   width: double.infinity,
                   constraints: BoxConstraints(
-                    maxWidth: MediaQuery.sizeOf(context).width,
+                                        maxWidth: 2000.0,
                   ),
                   decoration: BoxDecoration(),
                   child: Align(
