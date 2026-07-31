@@ -985,7 +985,7 @@ class _EReviewYourOrderMobileWidgetState
                                         .labelMediumFamily,
                                     color:
                                         FlutterFlowTheme.of(context).secondary,
-                                    fontSize: 28.0,
+                                                                          fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     useGoogleFonts:
                                         !FlutterFlowTheme.of(context)
