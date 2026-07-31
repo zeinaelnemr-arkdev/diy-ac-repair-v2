@@ -131,7 +131,7 @@ class _DSelectProductRepairWidgetState
                   padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                   child: ClipRRect(
                     child: Container(
-                      width: MediaQuery.sizeOf(context).width * 0.96,
+                                                    width: MediaQuery.sizeOf(context).width * 0.96, constraints: BoxConstraints(maxWidth: 2000.0),
                       decoration: BoxDecoration(
                         border: Border.all(
                           color: FlutterFlowTheme.of(context).primary,
