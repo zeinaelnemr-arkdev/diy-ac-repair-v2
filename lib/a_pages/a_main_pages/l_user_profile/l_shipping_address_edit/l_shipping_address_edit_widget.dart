@@ -150,7 +150,6 @@ class _LShippingAddressEditWidgetState
                                       child: Visibility(
                                         visible: responsiveVisibility(
                                           context: context,
-                                          phone: false,
                                         ),
                                         child: wrapWithModel(
                                           model: _model.s12FooterModel,
