@@ -287,7 +287,7 @@ class _ReviewYourOrderDesktopWidgetState
                                           model:
                                               '${cartListItemsItem.specType} | ${cartListItemsItem.desc}',
                                           price: valueOrDefault<String>(
-                                            '\$${cartListItemsItem.price.toString()}',
+                                                                                        '\$${cartListItemsItem.price.toStringAsFixed(2)}',
                                             '\$22.50',
                                           ),
                                           qty: valueOrDefault<int>(
@@ -925,7 +925,7 @@ class _ReviewYourOrderDesktopWidgetState
                                     child: SummaryLineWidget(
                                       label: 'Subtotal',
                                       value:
-                                          '\$${FFAppState().Cart.subtotal.toString()}',
+                                                                                    '\$${FFAppState().Cart.subtotal.toStringAsFixed(2)}',
                                       is_success: false,
                                       is_total: false,
                                     ),
@@ -936,7 +936,7 @@ class _ReviewYourOrderDesktopWidgetState
                                     child: SummaryLineWidget(
                                       label: 'Shipping',
                                       value:
-                                          '\$${FFAppState().Cart.shipping.toString()}',
+                                                                                    '\$${FFAppState().Cart.shipping.toStringAsFixed(2)}',
                                       is_success: true,
                                       is_total: false,
                                     ),
@@ -947,7 +947,7 @@ class _ReviewYourOrderDesktopWidgetState
                                     child: SummaryLineWidget(
                                       label: 'Estimated Tax',
                                       value:
-                                          '\$${FFAppState().Cart.tax.toString()}',
+                                                                                    '\$${FFAppState().Cart.tax.toStringAsFixed(2)}',
                                       is_success: false,
                                       is_total: false,
                                     ),
@@ -966,7 +966,7 @@ class _ReviewYourOrderDesktopWidgetState
                                 updateCallback: () => safeSetState(() {}),
                                 child: SummaryLineTotalWidget(
                                   value:
-                                      '\$${FFAppState().Cart.total.toString()}',
+                                                                            '\$${FFAppState().Cart.total.toStringAsFixed(2)}',
                                   is_success: false,
                                   is_total: true,
                                 ),
