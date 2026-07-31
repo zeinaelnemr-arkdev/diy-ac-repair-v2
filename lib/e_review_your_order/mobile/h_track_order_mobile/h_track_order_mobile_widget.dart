@@ -340,7 +340,7 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                           imgDesc:
                               'https://dimg.dreamflow.cloud/v1/image/capacitor%20part',
                           name: itemsItem.title,
-                          price: itemsItem.unitPrice.toString(),
+                                                    price: itemsItem.unitPrice.toStringAsFixed(2),
                           sku:
                               '${itemsItem.lineId} | ${itemsItem.returnPolicySnapshot.returnable ? 'Returnable | ' : ''}${itemsItem.specType} | ${itemsItem.qty.toString()}',
                         );
@@ -488,7 +488,7 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                             ),
                             Text(
                               valueOrDefault<String>(
-                                '\$${_model.orderMCS?.totalsSnap.subtotal.toString()}',
+                                                                '\$${_model.orderMCS?.totalsSnap.subtotal.toStringAsFixed(2)}',
                                 '\$87.14',
                               ),
                               style: FlutterFlowTheme.of(context)
@@ -530,7 +530,7 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                             ),
                             Text(
                               valueOrDefault<String>(
-                                '\$${_model.orderMCS?.totalsSnap.shipping.toString()}',
+                                                                '\$${_model.orderMCS?.totalsSnap.shipping.toStringAsFixed(2)}',
                                 '\$87.14',
                               ),
                               style: FlutterFlowTheme.of(context)
@@ -572,7 +572,7 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                             ),
                             Text(
                               valueOrDefault<String>(
-                                '\$${_model.orderMCS?.totalsSnap.tax.toString()}',
+                                                                '\$${_model.orderMCS?.totalsSnap.tax.toStringAsFixed(2)}',
                                 '\$87.14',
                               ),
                               style: FlutterFlowTheme.of(context)
@@ -622,7 +622,7 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                         ),
                         Text(
                           valueOrDefault<String>(
-                            '\$${_model.orderMCS?.totalsSnap.total.toString()}',
+                                                        '\$${_model.orderMCS?.totalsSnap.total.toStringAsFixed(2)}',
                             '\$87.14',
                           ),
                           style: FlutterFlowTheme.of(context)
