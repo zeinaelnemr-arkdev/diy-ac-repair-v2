@@ -709,7 +709,7 @@ class _EReviewYourOrderMobileWidgetState
                                                             .fromSTEB(0.0, 4.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      '\$${(toolsListDisplayItem.discountPrice != null) && (toolsListDisplayItem.discountPrice > 0.0) ? toolsListDisplayItem.discountPrice.toString() : toolsListDisplayItem.salePrice.toString()}',
+                                                                                                            '\$${(toolsListDisplayItem.discountPrice != null) && (toolsListDisplayItem.discountPrice > 0.0) ? toolsListDisplayItem.discountPrice.toStringAsFixed(2) : toolsListDisplayItem.salePrice.toStringAsFixed(2)}',
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .bodyMedium
