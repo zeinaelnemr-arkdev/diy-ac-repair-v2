@@ -367,7 +367,7 @@ class _GConfirmationSuccessWidgetState
                                                         ),
                                                   ),
                                                   Text(
-                                                    '\$ ${_model.order?.totalsSnap.total.toString()}',
+                                                                                                        '\$ ${_model.order?.totalsSnap.total.toStringAsFixed(2)}',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .titleMedium
