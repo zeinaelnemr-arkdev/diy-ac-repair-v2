@@ -138,10 +138,8 @@ class _DSelectProductRepairWidgetState
                           width: 1.0,
                         ),
                       ),
-                      child: SingleChildScrollView(
-                        primary: false,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
+child: Column(
+                          mainAxisSize: MainAxisSize.min,
                           children: [
                             wrapWithModel(
                               model: _model.s01NavigatioBarModel,
@@ -463,7 +461,6 @@ class _DSelectProductRepairWidgetState
                               ),
                           ],
                         ),
-                      ),
                     ),
                   ),
                 ),
