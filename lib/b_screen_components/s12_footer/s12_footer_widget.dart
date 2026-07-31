@@ -60,7 +60,7 @@ class _S12FooterWidgetState extends State<S12FooterWidget> {
           return [
             () => Container(
                   width: double.infinity,
-                  height: 80.0,
+                                    height: MediaQuery.sizeOf(context).width < kBreakpointLarge ? 120.0 : 80.0,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).primaryBackground,
                   ),
@@ -102,8 +102,8 @@ class _S12FooterWidgetState extends State<S12FooterWidget> {
                                 MediaQuery.sizeOf(context).width <
                                         kBreakpointLarge
                                     ? 2
-                                    : 4,
-                                4,
+                                                                        : 5,
+                                                                5,
                               ),
                             ),
                             itemCount: 5,
