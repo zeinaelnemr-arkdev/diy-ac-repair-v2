@@ -190,7 +190,7 @@ class _PartRow2WidgetState extends State<PartRow2Widget> {
                       ),
                     ),
                     Container(
-                      width: 40.0,
+                                            width: 72.0,
                       child: Text(
                         '\$${widget.price}',
                         textAlign: TextAlign.end,
