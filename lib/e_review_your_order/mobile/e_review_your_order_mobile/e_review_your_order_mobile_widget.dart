@@ -434,7 +434,7 @@ class _EReviewYourOrderMobileWidgetState
                                   details:
                                       '${cartListItemsItem.specType} | ${cartListItemsItem.desc}',
                                   name: cartListItemsItem.title,
-                                  price: cartListItemsItem.price.toString(),
+                                                                    price: cartListItemsItem.price.toStringAsFixed(2),
                                   qty: cartListItemsItem.qty,
                                   last: false,
                                   itemId: cartListItemsItem.itemId!,
@@ -1052,7 +1052,7 @@ class _EReviewYourOrderMobileWidgetState
                               updateCallback: () => safeSetState(() {}),
                               child: SummaryRowWidget(
                                 label: 'Subtotal',
-                                value: FFAppState().Cart.subtotal.toString(),
+                                                                value: FFAppState().Cart.subtotal.toStringAsFixed(2),
                               ),
                             ),
                             wrapWithModel(
@@ -1060,7 +1060,7 @@ class _EReviewYourOrderMobileWidgetState
                               updateCallback: () => safeSetState(() {}),
                               child: SummaryRowWidget(
                                 label: 'Shipping',
-                                value: FFAppState().Cart.shipping.toString(),
+                                                                value: FFAppState().Cart.shipping.toStringAsFixed(2),
                               ),
                             ),
                             wrapWithModel(
@@ -1068,7 +1068,7 @@ class _EReviewYourOrderMobileWidgetState
                               updateCallback: () => safeSetState(() {}),
                               child: SummaryRowWidget(
                                 label: 'Tax',
-                                value: FFAppState().Cart.tax.toString(),
+                                                                value: FFAppState().Cart.tax.toStringAsFixed(2),
                               ),
                             ),
                           ].divide(SizedBox(height: 8.0)),
@@ -1103,7 +1103,7 @@ class _EReviewYourOrderMobileWidgetState
                                   ),
                             ),
                             Text(
-                              '\$${FFAppState().Cart.total.toString()}',
+                                                            '\$${FFAppState().Cart.total.toStringAsFixed(2)}',
                               style: FlutterFlowTheme.of(context)
                                   .titleLarge
                                   .override(
