@@ -118,8 +118,8 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
                 width: MediaQuery.sizeOf(context).width < kBreakpointLarge
                     ? double.infinity
                     : (MediaQuery.sizeOf(context).width * 0.43),
-                height: MediaQuery.sizeOf(context).height * 1.04,
-                constraints: BoxConstraints(
+                                                constraints: BoxConstraints(
+                                  minHeight: MediaQuery.sizeOf(context).height * 1.04,
                   maxWidth: valueOrDefault<double>(
                     MediaQuery.sizeOf(context).width < kBreakpointLarge
                         ? double.infinity
@@ -445,8 +445,8 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
               width: MediaQuery.sizeOf(context).width < kBreakpointLarge
                   ? double.infinity
                   : (MediaQuery.sizeOf(context).width * 0.502),
-              height: MediaQuery.sizeOf(context).height * 1.04,
-              constraints: BoxConstraints(
+                                          constraints: BoxConstraints(
+                              minHeight: MediaQuery.sizeOf(context).height * 1.04,
                 maxWidth: 1055.0,
                 maxHeight: valueOrDefault<double>(
                   () {
