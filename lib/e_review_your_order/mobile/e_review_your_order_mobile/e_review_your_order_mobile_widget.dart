@@ -819,7 +819,7 @@ class _EReviewYourOrderMobileWidgetState
                                           .labelMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .secondary,
-                                      fontSize: 28.0,
+                                                                            fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       useGoogleFonts:
                                           !FlutterFlowTheme.of(context)
@@ -900,7 +900,7 @@ class _EReviewYourOrderMobileWidgetState
                                           .labelSmallFamily,
                                       color:
                                           FlutterFlowTheme.of(context).tertiary,
-                                      fontSize: 24.0,
+                                                                            fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       useGoogleFonts:
                                           !FlutterFlowTheme.of(context)
