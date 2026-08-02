@@ -486,6 +486,14 @@ class _S05HomestartdiagnosisWidgetState
                   ? double.infinity
                   : (MediaQuery.sizeOf(context).width * 0.502),
               height: MediaQuery.sizeOf(context).height * 0.9,
+              constraints: BoxConstraints(
+                maxWidth: valueOrDefault<double>(
+                  MediaQuery.sizeOf(context).width < kBreakpointLarge
+                  ? double.infinity
+                  : 1000.0,
+                  1000.0,
+                  ),
+                ),
               decoration: BoxDecoration(
                 border: Border.all(
                   color: FlutterFlowTheme.of(context).primary,
